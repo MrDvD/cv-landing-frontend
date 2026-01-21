@@ -1,0 +1,23 @@
+<div class="activity-card">
+  <div class="card-header">
+    <div class="header-content">
+      <div class="activity-main-info">
+        <span class="activity-name">{{ activityName }}</span>
+        <span class="activity-subtitle">{{ activitySubtitle }}</span>
+      </div>
+      @if (metaLabel != '') {
+        <div class="activity-meta">{{ metaLabel }}</div>
+      }
+    </div>
+  </div>
+  
+  <div class="card-body">
+    <p class="description">{{ description }}</p>
+    
+    <div class="tags">
+      @for (tag of tags; track $index) {
+        <span class="tag">{{ tag }}</span>
+      }
+    </div>
+  </div>
+</div>

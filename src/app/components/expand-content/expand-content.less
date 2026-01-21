@@ -1,0 +1,62 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  position: relative;
+  width: 100%;
+}
+
+.expandable-container-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+}
+
+.expandable-container {
+  overflow: hidden;
+  transition: height 0.3s ease-in-out;
+  position: relative;
+  z-index: 1;
+}
+
+.gradient-overlay {
+  position: absolute;
+  bottom: 40px;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: linear-gradient(to top, white, transparent);
+  pointer-events: none;
+  z-index: 2;
+  transition: opacity 0.3s ease-in-out;
+  
+  &.hidden {
+    opacity: 0;
+  }
+}
+
+.expand-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #333;
+  transition: color 0.2s ease;
+  position: relative;
+  z-index: 3;
+  outline: none;
+}
+
+.arrow-icon {
+  transition: transform 0.3s ease-in-out;
+  
+  &.expanded {
+    transform: rotate(180deg);
+  }
+}

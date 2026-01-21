@@ -1,0 +1,41 @@
+<div class="skills-tree">
+  <div class="tree-title">{{ title }}/</div>
+  
+  @for (node of treeData; track node.name; let last = $last) {
+    <ng-container *ngTemplateOutlet="treeNodeTemplate; 
+      context: { 
+        node: node, 
+        depth: 0, 
+        isLast: last,
+        parentPrefix: ''
+      }">
+    </ng-container>
+  }
+</div>
+
+<ng-template #treeNodeTemplate let-node="node" let-depth="depth" 
+             let-isLast="isLast" let-parentPrefix="parentPrefix">
+  
+  <div class="node-line">
+    <span class="indent">{{ parentPrefix }}</span>
+    <span class="indent">{{ isLast ? '└─ ' : '├─ ' }}</span>
+    <span class="node-name" [class.category]="depth === 0">{{ node.name }}/</span>
+    
+    @if (node.details && node.details.length > 0) {
+      <span class="details">({{ node.details.join(', ') }})</span>
+    }
+  </div>
+  
+  @if (node.children && node.children.length > 0) {
+    @for (child of node.children; track child.name; let childLast = $last) {
+      <ng-container *ngTemplateOutlet="treeNodeTemplate; 
+        context: { 
+          node: child, 
+          depth: depth + 1, 
+          isLast: childLast,
+          parentPrefix: parentPrefix + (isLast ? '   ' : '│  ')
+        }">
+      </ng-container>
+    }
+  }
+</ng-template>
