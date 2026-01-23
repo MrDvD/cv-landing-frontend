@@ -1,0 +1,24 @@
+@import "@styles/i3wm.less";
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.info-section {
+  padding: 15px;
+  font-family: 'Courier New', Courier, monospace;
+  color: #586e75;
+  line-height: 1.4;
+
+  .terminal-output {
+    p {
+      margin: 2px 0;
+      &::before {
+        content: "> ";
+        opacity: 0.5;
+      }
+    }
+  }
+}

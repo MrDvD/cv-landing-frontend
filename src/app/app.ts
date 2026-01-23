@@ -2,10 +2,11 @@ import { Component, signal } from '@angular/core';
 import { ActivityInfoComponent } from './components/activity-info/activity-info';
 import { SkillsTreeComponent } from './components/skills-tree/skills-tree';
 import { ExpandContentComponent } from './components/expand-content/expand-content';
+import { AboutMeComponent } from './components/about-me/about-me';
 
 @Component({
   selector: 'app-root',
-  imports: [ActivityInfoComponent, SkillsTreeComponent, ExpandContentComponent],
+  imports: [ActivityInfoComponent, SkillsTreeComponent, ExpandContentComponent, AboutMeComponent],
   templateUrl: './app.html',
   styleUrl: './app.less'
 })
