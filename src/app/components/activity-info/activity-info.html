@@ -14,9 +14,23 @@
   <div class="card-body">
     <p class="description">{{ description }}</p>
     
-    <div class="tags">
-      @for (tag of tags; track $index) {
-        <span class="tag">{{ tag }}</span>
+    <div class="tags-container">
+      @for (tag of tags.core; track tag) {
+        <span class="badge core-badge">{{ tag }}</span>
+      }
+      
+      @if (hasAdditionalTags && !showAdditionalTags) {
+        <div class="tag-separator" 
+              [class.expanded]="showAdditionalTags"
+              (click)="toggleAdditionalTags()">
+          <span class="separator-text">...</span>
+        </div>
+      }
+      
+      @if (showAdditionalTags && tags.additional && tags.additional.length > 0) {
+        @for (tag of tags.additional; track tag) {
+          <span class="badge secondary-badge">{{ tag }}</span>
+        }
       }
     </div>
   </div>

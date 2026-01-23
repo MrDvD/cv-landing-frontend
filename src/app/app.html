@@ -9,14 +9,20 @@
             activitySubtitle="Многопоточный клиент-серверный менеджер коллекции."
             metaLabel="100%"
             description="Разработал приложение и успешно защитил работу на максимальный балл."
-            [tags]="['Java', 'Maven', 'SOLID', 'SOA', 'PostgreSQL', 'GitHub', 'Protobuf', 'Docker', 'Compose', 'gRPC']">
+            [tags]="{
+              core: ['Java', 'PostgreSQL', 'Docker', 'gRPC'],
+              additional: ['Protobuf', 'Compose', 'Maven', 'SOLID', 'SOA']
+            }">
           </app-activity-info>
           <app-activity-info
             activityName="Kulibin Third"
             activitySubtitle="Веб-приложение, созданное полностью с помощью ИИ-инструментов."
             metaLabel=""
             description="Руководил разработкой, вёл репозиторий."
-            [tags]="['NodeJS', 'HTML', 'CSS', 'JavaScript', 'GitHub', 'Copilot']">
+            [tags]="{
+              core: ['NodeJS', 'Copilot', 'Vanilla'],
+              additional: ['HTML', 'CSS', 'JavaScript']
+            }">
           </app-activity-info>
         </div>
       </section>
@@ -27,7 +33,9 @@
             activityName="Мастерская объединения ОЛИМП"
             activitySubtitle="Программирование микроконтроллеров."
             description="Писал простые скрипты в STM32CubeIDE."
-            [tags]="['C', 'STM32']">
+            [tags]="{
+              core: ['C', 'STM32']
+            }">
           </app-activity-info>
         </div>
       </section>
@@ -36,7 +44,7 @@
     <div class="right-column">
       <section class="skills-section">
         <h2 class="section-title"># hard-skills</h2>
-        <app-expand-content>
+        <app-expand-content [maxHeight]='"225px"'>
           <div class="activity-list">
             <app-skills-tree></app-skills-tree>
           </div>
@@ -50,7 +58,10 @@
             activitySubtitle="Обновил знания по JS & TS, получил обратную связь и опыт от специалистов Т-Банка при работе над тремя проектами."
             metaLabel=""
             description="Посмотреть репозиторий проекта, посмотреть репозиторий курсовой"
-            [tags]="['JavaScript', 'TypeScript', 'Vanilla', 'Angular', 'SCSS', 'HTML', 'Fastify']">
+            [tags]="{
+              core: ['JavaScript', 'TypeScript', 'Angular'],
+              additional: ['SCSS', 'HTML5', 'Vanilla', 'Fastify']
+            }">
           </app-activity-info>
         </div>
       </section>

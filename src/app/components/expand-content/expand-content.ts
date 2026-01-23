@@ -6,9 +6,7 @@ import { Component, Input, ViewChild, ElementRef } from '@angular/core';
   styleUrl: './expand-content.less',
 })
 export class ExpandContentComponent {
-  @Input() maxHeight: string = '225px';
-  @Input() showButtonText: string = 'Показать больше';
-  @Input() hideButtonText: string = 'Скрыть';
+  @Input({required: true}) maxHeight: string = '';
   
   @ViewChild('contentWrapper') contentWrapper!: ElementRef<HTMLElement>;
   
