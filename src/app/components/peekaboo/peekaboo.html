@@ -1,15 +1,13 @@
 <div class="wrapper">
   <app-i3-window windowTitle="photo.jpg - feh">
-    <app-dither-filter [imageUrl]="'photo.jpg'"></app-dither-filter>
+    <app-dither-filter imageUrl="photo.jpg" class="image"></app-dither-filter>
   </app-i3-window>
 
   <app-i3-window windowTitle="about-me.txt - bash" class="flex">
     <div class="info-section">
-      <div class="terminal-output">
-        <p>NAME: МАКАР_ЛАБИН</p>
-        <p>STAT: 20 y.o. / 18.11.2005</p>
-        <p>LOC: Saint-Petersburg, RU</p>
-      </div>
+      <p>NAME: МАКАР_ЛАБИН</p>
+      <p>STAT: 20 y.o. / 18.11.2005</p>
+      <p>LOC: Saint-Petersburg, RU</p>
     </div>
   </app-i3-window>
 </div>

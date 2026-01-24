@@ -1,0 +1,86 @@
+@light-bg: #ffffff;
+@dark-bg: #0d0d0d;
+
+@light-white: @light-bg;
+@dark-white: #dedede;
+
+@light-black: #3a3a3a;
+@dark-black: @dark-bg;
+
+@dark-bg-1: #0d0d0d;
+@dark-bg-2: #161616;
+@dark-bg-3: #222222;
+
+@dark-text-1: #e0e0e0;
+@dark-text-2: #a0a0a0;
+@dark-text-3: #666666;
+
+@light-bg-1: #f0f0f0;
+@light-bg-2: #ffffff;
+@light-bg-3: #e5e5e5;
+ 
+@light-text-1: #1a1a1a;
+@light-text-2: #4a4a4a;
+@light-text-3: #888888;
+
+@light-text: #2e3440;
+@dark-text: #d8dee9;
+
+@light-border: #d1d1d1;
+@dark-border: #3b4252;
+
+@primary-light: #0056b3; 
+@primary-dark: #81a1c1;
+
+@secondary-light: #d08770;
+@secondary-dark: #ebcb8b;
+
+@accent-green: #a3be8c;
+
+.theme-dark {
+  --bg-color: @dark-bg;
+  --text-color: @dark-text;
+  --border-color: @dark-border;
+
+  --white-color: @dark-white;
+  --black-color: @dark-black;
+
+  --bg-1: @dark-bg-1;
+  --bg-2: @dark-bg-2;
+  --bg-3: @dark-bg-3;
+  
+  --text-1: @dark-text-1;
+  --text-2: @dark-text-2;
+  --text-3: @dark-text-3;
+  
+  --primary: @primary-dark;
+  --secondary: @secondary-dark;
+  --accent: @accent-green;
+  
+  --code-bg: #1a1a1a;
+  --status-bar-bg: #151515;
+}
+
+.theme-light {
+  --bg-color: @light-bg;
+  --text-color: @light-text;
+  --border-color: @light-border;
+
+  --white-color: @light-white;
+  --black-color: @light-black;
+
+  --bg-1: @light-bg-1;
+  --bg-2: @light-bg-2;
+  --bg-3: @light-bg-3;
+  
+  --text-1: @light-text-1;
+  --text-2: @light-text-2;
+  --text-3: @light-text-3;
+  
+  --primary: @primary-light;
+  --secondary: @secondary-light;
+  --accent: darken(@accent-green, 20%);
+  
+  --code-bg: #f5f5f5;
+  --status-bar-bg: #e5e5e5;
+}

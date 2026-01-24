@@ -1,24 +1,32 @@
 .i3-bar {
   display: flex;
   justify-content: space-between;
-  background-color: #ffffff;
-  border-bottom: 1px solid #000000;
+  background-color: var(--bg-1);
+  border-bottom: 1px solid var(--border);
+  color: var(--text-1);
   font-size: 13px;
   height: 24px;
   line-height: 24px;
-  font-family: 'monospace', monospace;
+  font-family: 'Fira Code', 'JetBrains Mono', monospace;
 
   .workspaces {
     display: flex;
     
     .ws {
       padding: 0 10px;
-      border-right: 1px solid #eeeeee;
-      cursor: default;
+      border-right: 1px solid var(--border);
+      cursor: pointer;
+      transition: background-color 0.1s ease;
+      user-select: none;
+
+      &:hover:not(.active) {
+        background-color: var(--bg-3);
+      }
 
       &.active {
-        background-color: #000000;
-        color: #ffffff;
+        background-color: var(--primary);
+        color: var(--bg-1);
+        cursor: default;
       }
     }
   }
@@ -28,15 +36,14 @@
     
     .item {
       margin-left: 15px;
+      color: var(--text-2);
       
-      &::before {
-        content: "[ ";
-        color: #888;
+      &::before, &::after {
+        color: var(--text-3);
       }
-      &::after {
-        content: " ]";
-        color: #888;
-      }
+      
+      &::before { content: "[ "; }
+      &::after { content: " ]"; }
     }
   }
 }

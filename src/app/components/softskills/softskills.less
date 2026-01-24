@@ -1,31 +1,44 @@
-@gutter: #f0f0f0;
-@accent-red: #a31515;
-@accent-blue: #0076a8;
+@vim-gutter-bg: var(--bg-1);
+@vim-buffer-bg: var(--bg-2);
 
 :host {
-  font-family: 'monospace', monospace;
+  font-family: 'Fira Code', 'JetBrains Mono', 'monospace', monospace;
+  width: 100%;
+  display: block;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  background: var(--bg-1);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
 }
 
 .vim-content {
   display: flex;
   height: 100%;
+  width: 100%;
   
   .line-nums, pre {
     font-size: 14px;
     line-height: 1.6;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
   }
 
   .line-nums {
-    background: @gutter;
-    color: #999;
-    padding-left: 10px;
-    padding-right: 10px;
+    background: @vim-gutter-bg;
+    color: var(--text-3);
+    padding-left: 12px;
+    padding-right: 12px;
     text-align: right;
-    min-width: 35px;
+    min-width: 40px;
     user-select: none;
-    white-space: pre; 
+    white-space: pre;
+    border-right: 1px solid var(--border);
   }
 
   pre {
@@ -33,8 +46,19 @@
     padding-left: 15px;
     flex-grow: 1;
     overflow-x: auto;
+    background-color: @vim-buffer-bg;
+    color: var(--text-1);
     
-    .key { color: @accent-red; font-weight: bold; }
-    .val { color: @accent-blue; }
+    .key { 
+      color: var(--secondary);
+      font-weight: 600; 
+    }
+    .val { 
+      color: var(--primary);
+    }
   }
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
 }

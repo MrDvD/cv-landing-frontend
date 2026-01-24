@@ -1,1 +1,18 @@
-/* You can add global styles to this file, and also import other style files */
+@import "@styles/colors.less";
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+  display: flex;
+  transition: background-color 0.2s ease;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}

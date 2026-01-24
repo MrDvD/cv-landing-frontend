@@ -1,19 +1,22 @@
 .skills-tree {
-  font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', monospace;
+  font-family: 'Fira Code', 'SF Mono', monospace;
   font-size: 0.875rem;
-  color: #333;
   line-height: 1.5;
-  background: #f8f9fa;
   padding: 1.5rem;
   border-radius: 8px;
-  border: 1px solid #eaeaea;
   overflow-x: auto;
+  
+  background: var(--bg-3);
+  color: var(--text-1);
+  border: 1px solid var(--border);
+  transition: all 0.2s ease;
 }
 
 .tree-title {
   font-weight: 600;
-  color: #2d3748;
+  color: var(--text-1);
   margin-bottom: 0.5rem;
+  border-bottom: 1px dashed var(--border-color);
 }
 
 .node-line {
@@ -21,23 +24,24 @@
 }
 
 .node-name {
-  color: #2d3748;
+  color: var(--text-1);
   font-weight: 500;
-}
-
-.node-name.category {
-  color: #2c5282;
-  font-weight: 600;
+  
+  &.category {
+    color: var(--primary);
+    font-weight: 600;
+  }
 }
 
 .details {
-  color: #718096;
+  color: var(--text-2);
   font-style: italic;
   margin-left: 0.5rem;
   font-size: 0.8125rem;
 }
 
 .indent {
+  color: var(--text-3);
   font-family: monospace;
   white-space: pre;
 }

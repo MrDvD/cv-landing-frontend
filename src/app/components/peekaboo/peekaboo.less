@@ -11,19 +11,23 @@
   flex: 1;
 }
 
+.image {
+  max-height: 275px;
+  background-color: var(--white-color);
+}
+
 .info-section {
   padding: 15px;
   font-family: 'Courier New', Courier, monospace;
-  color: #586e75;
+  background-color: var(--code-bg);
+  color: var(--text-2);
   line-height: 1.4;
 
-  .terminal-output {
-    p {
-      margin: 2px 0;
-      &::before {
-        content: "> ";
-        opacity: 0.5;
-      }
+  p {
+    margin: 2px 0;
+    &::before {
+      content: "> ";
+      opacity: 0.5;
     }
   }
 }

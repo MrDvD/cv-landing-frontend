@@ -6,6 +6,4 @@ import { Component } from '@angular/core';
   templateUrl: './softskills.html',
   styleUrl: './softskills.less',
 })
-export class SoftSkillsComponent {
-
-}
+export class SoftSkillsComponent {}
