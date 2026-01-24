@@ -1,13 +1,17 @@
+@import "@styles/platforms.less";
+
 .layout-container {
-  max-width: 900px;
+  max-width: @main_content;
   margin: 0 auto;
-  padding: 2rem 0;
+  padding-top: 1rem;
+  padding-bottom: 2rem;
 }
 
 .profile-grid {
   display: grid;
   grid-template-columns: 1.5fr 1fr;
-  gap: 2rem;
+  gap: 1.5rem;
+  padding: 0 8px;
 }
 
 .skills-section,
@@ -31,7 +35,7 @@
   gap: 1rem;
 }
 
-@media (max-width: 600px) {
+@media (max-width: @mobile) {
   .profile-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;

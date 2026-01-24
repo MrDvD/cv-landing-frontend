@@ -1,71 +1,74 @@
 <div class="layout-container">
+  <app-i3-bar></app-i3-bar>
   <app-about-me></app-about-me>
-  <div class="profile-grid">
-    <div class="left-column">
-      <section class="projects-section">
-        <h2 class="section-title"># projects</h2>
-        <div class="activity-list">
-          <app-activity-info
-            activityName="Лабораторная работа по программированию"
-            activitySubtitle="Многопоточный клиент-серверный менеджер коллекции."
-            metaLabel="100%"
-            description="Разработал приложение и успешно защитил работу на максимальный балл."
-            [tags]="{
-              core: ['Java', 'PostgreSQL', 'Docker', 'gRPC'],
-              additional: ['Protobuf', 'Compose', 'Maven', 'SOLID', 'SOA']
-            }">
-          </app-activity-info>
-          <app-activity-info
-            activityName="Kulibin Third"
-            activitySubtitle="Веб-приложение, созданное полностью с помощью ИИ-инструментов."
-            metaLabel=""
-            description="Руководил разработкой, вёл репозиторий."
-            [tags]="{
-              core: ['NodeJS', 'Copilot', 'Vanilla'],
-              additional: ['HTML', 'CSS', 'JavaScript']
-            }">
-          </app-activity-info>
-        </div>
-      </section>
-      <section class="activity-section">
-        <h2 class="section-title"># activity</h2>
-        <div class="activity-list">
-          <app-activity-info
-            activityName="Мастерская объединения ОЛИМП"
-            activitySubtitle="Программирование микроконтроллеров."
-            description="Писал простые скрипты в STM32CubeIDE."
-            [tags]="{
-              core: ['C', 'STM32']
-            }">
-          </app-activity-info>
-        </div>
-      </section>
-    </div>
-    
-    <div class="right-column">
-      <section class="skills-section">
-        <h2 class="section-title"># hard-skills</h2>
-        <app-expand-content [maxHeight]='"225px"'>
+  <app-i3-window windowTitle="it.md - Obsidian">
+    <div class="profile-grid">
+      <div class="left-column">
+        <section class="projects-section">
+          <h2 class="section-title"># projects</h2>
           <div class="activity-list">
-            <app-skills-tree></app-skills-tree>
+            <app-activity-info
+              activityName="Лабораторная работа по программированию"
+              activitySubtitle="Многопоточный клиент-серверный менеджер коллекции."
+              metaLabel="100%"
+              description="Разработал приложение и успешно защитил работу на максимальный балл."
+              [tags]="{
+                core: ['Java', 'PostgreSQL', 'Docker', 'gRPC'],
+                additional: ['Protobuf', 'Compose', 'Maven', 'SOLID', 'SOA']
+              }">
+            </app-activity-info>
+            <app-activity-info
+              activityName="Kulibin Third"
+              activitySubtitle="Веб-приложение, созданное полностью с помощью ИИ-инструментов."
+              metaLabel=""
+              description="Руководил разработкой, вёл репозиторий."
+              [tags]="{
+                core: ['NodeJS', 'Copilot', 'Vanilla'],
+                additional: ['HTML', 'CSS', 'JavaScript']
+              }">
+            </app-activity-info>
           </div>
-        </app-expand-content>
-      </section>
-      <section class="education-section">
-        <h2 class="section-title"># education</h2>
-        <div class="activity-list">
-          <app-activity-info
-            activityName="Интенсив по JavaScript"
-            activitySubtitle="Обновил знания по JS & TS, получил обратную связь и опыт от специалистов Т-Банка при работе над тремя проектами."
-            metaLabel=""
-            description="Посмотреть репозиторий проекта, посмотреть репозиторий курсовой"
-            [tags]="{
-              core: ['JavaScript', 'TypeScript', 'Angular'],
-              additional: ['SCSS', 'HTML5', 'Vanilla', 'Fastify']
-            }">
-          </app-activity-info>
-        </div>
-      </section>
+        </section>
+        <section class="activity-section">
+          <h2 class="section-title"># activity</h2>
+          <div class="activity-list">
+            <app-activity-info
+              activityName="Мастерская объединения ОЛИМП"
+              activitySubtitle="Программирование микроконтроллеров."
+              description="Писал простые скрипты в STM32CubeIDE."
+              [tags]="{
+                core: ['C', 'STM32']
+              }">
+            </app-activity-info>
+          </div>
+        </section>
+      </div>
+      
+      <div class="right-column">
+        <section class="skills-section">
+          <h2 class="section-title"># hard-skills</h2>
+          <app-expand-content [maxHeight]='"225px"'>
+            <div class="activity-list">
+              <app-skills-tree></app-skills-tree>
+            </div>
+          </app-expand-content>
+        </section>
+        <section class="education-section">
+          <h2 class="section-title"># education</h2>
+          <div class="activity-list">
+            <app-activity-info
+              activityName="Интенсив по JavaScript"
+              activitySubtitle="Обновил знания по JS & TS, получил обратную связь и опыт от специалистов Т-Банка при работе над тремя проектами."
+              metaLabel=""
+              description="Посмотреть репозиторий проекта, посмотреть репозиторий курсовой"
+              [tags]="{
+                core: ['JavaScript', 'TypeScript', 'Angular'],
+                additional: ['SCSS', 'HTML5', 'Vanilla', 'Fastify']
+              }">
+            </app-activity-info>
+          </div>
+        </section>
+      </div>
     </div>
-  </div>
+  </app-i3-window>
 </div>

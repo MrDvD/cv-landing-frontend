@@ -1,0 +1,42 @@
+.i3-bar {
+  display: flex;
+  justify-content: space-between;
+  background-color: #ffffff;
+  border-bottom: 1px solid #000000;
+  font-size: 13px;
+  height: 24px;
+  line-height: 24px;
+  font-family: 'monospace', monospace;
+
+  .workspaces {
+    display: flex;
+    
+    .ws {
+      padding: 0 10px;
+      border-right: 1px solid #eeeeee;
+      cursor: default;
+
+      &.active {
+        background-color: #000000;
+        color: #ffffff;
+      }
+    }
+  }
+
+  .status-line {
+    padding-right: 10px;
+    
+    .item {
+      margin-left: 15px;
+      
+      &::before {
+        content: "[ ";
+        color: #888;
+      }
+      &::after {
+        content: " ]";
+        color: #888;
+      }
+    }
+  }
+}
