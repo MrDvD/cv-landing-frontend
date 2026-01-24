@@ -93,17 +93,12 @@ export class DitherFilterComponent implements AfterViewInit {
 
       void main() {
         vec4 texColor = texture2D(uTexture, vTexCoord);
-        // Grayscale calculation: $Y = 0.299R + 0.587G + 0.114B$
         float gray = dot(texColor.rgb, vec3(0.299, 0.587, 0.114));
         
         gray = (gray - 0.5) * uContrast + 0.5 + uBrightness;
         
         float threshold = getBayer(gl_FragCoord.xy);
         float limit = gray > threshold ? 1.0 : 0.0;
-        
-        // TRANSPARENCY: 
-        // If limit is 0 (dark), alpha is 1 (visible)
-        // If limit is 1 (light), alpha is 0 (transparent)
         float alpha = 1.0 - limit;
         
         gl_FragColor = vec4(uColor, alpha);
@@ -121,26 +116,26 @@ export class DitherFilterComponent implements AfterViewInit {
     this.image.onload = () => this.render();
   }
 
-private render() {
-  if (!this.gl || !this.program || !this.image) return;
-  const gl = this.gl;
-  const canvas = this.canvasRef.nativeElement;
+  private render() {
+    if (!this.gl || !this.program || !this.image) return;
+    const gl = this.gl;
+    const canvas = this.canvasRef.nativeElement;
 
-  canvas.width = this.image.width;
-  canvas.height = this.image.height;
-  gl.viewport(0, 0, canvas.width, canvas.height);
+    canvas.width = this.image.width;
+    canvas.height = this.image.height;
+    gl.viewport(0, 0, canvas.width, canvas.height);
 
-  gl.clearColor(0, 0, 0, 0);
-  gl.clear(gl.COLOR_BUFFER_BIT);
+    gl.clearColor(0, 0, 0, 0);
+    gl.clear(gl.COLOR_BUFFER_BIT);
 
-  gl.useProgram(this.program);
+    gl.useProgram(this.program);
 
-  gl.uniform1f(gl.getUniformLocation(this.program, 'uScale'), this.scale);
-  gl.uniform1f(gl.getUniformLocation(this.program, 'uBrightness'), this.brightness);
-  gl.uniform1f(gl.getUniformLocation(this.program, 'uContrast'), this.contrast);
-  gl.uniform3fv(gl.getUniformLocation(this.program, 'uColor'), this.color);
-  
-  gl.uniform1i(gl.getUniformLocation(this.program, 'uTexture'), 0);
+    gl.uniform1f(gl.getUniformLocation(this.program, 'uScale'), this.scale);
+    gl.uniform1f(gl.getUniformLocation(this.program, 'uBrightness'), this.brightness);
+    gl.uniform1f(gl.getUniformLocation(this.program, 'uContrast'), this.contrast);
+    gl.uniform3fv(gl.getUniformLocation(this.program, 'uColor'), this.color);
+    
+    gl.uniform1i(gl.getUniformLocation(this.program, 'uTexture'), 0);
 
     const buffer = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
@@ -150,7 +145,7 @@ private render() {
     gl.enableVertexAttribArray(posAttrib);
     gl.vertexAttribPointer(posAttrib, 2, gl.FLOAT, false, 0, 0);
 
-    this.texture = gl.createTexture()!;
+    this.texture = gl.createTexture();
     gl.bindTexture(gl.TEXTURE_2D, this.texture);
     gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, this.image);
     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST);
@@ -168,7 +163,7 @@ private render() {
       gl.compileShader(s);
       return s;
     };
-    const prg = gl.createProgram()!;
+    const prg = gl.createProgram();
     gl.attachShader(prg, createShader(gl.VERTEX_SHADER, vs));
     gl.attachShader(prg, createShader(gl.FRAGMENT_SHADER, fs));
     gl.linkProgram(prg);
