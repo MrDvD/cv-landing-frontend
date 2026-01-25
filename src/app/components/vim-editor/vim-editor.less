@@ -1,8 +1,4 @@
-@vim-gutter-bg: var(--bg-1);
-@vim-buffer-bg: var(--bg-2);
-
 :host {
-  font-family: 'Fira Code', 'JetBrains Mono', 'monospace', monospace;
   width: 100%;
   display: block;
 }
@@ -23,6 +19,7 @@
   width: 100%;
   
   .line-nums, pre {
+    font-family: 'Fira Code', 'JetBrains Mono', monospace;
     font-size: 14px;
     line-height: 1.6;
     padding-top: 10px;
@@ -30,7 +27,7 @@
   }
 
   .line-nums {
-    background: @vim-gutter-bg;
+    background: var(--bg-1);
     color: var(--text-3);
     padding-left: 12px;
     padding-right: 12px;
@@ -46,7 +43,7 @@
     padding-left: 15px;
     flex-grow: 1;
     overflow-x: auto;
-    background-color: @vim-buffer-bg;
+    background-color: var(--bg-2);
     color: var(--text-1);
     
     .key { 
@@ -57,8 +54,4 @@
       color: var(--primary);
     }
   }
-}
-
-@keyframes blink {
-  50% { opacity: 0; }
 }
