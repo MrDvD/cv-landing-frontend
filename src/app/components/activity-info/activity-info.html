@@ -2,36 +2,38 @@
   <div class="card-header">
     <div class="header-content">
       <div class="activity-main-info">
-        <span class="activity-name">{{ activityName }}</span>
-        <span class="activity-subtitle">{{ activitySubtitle }}</span>
+        <span class="activity-name">{{ activity.name }}</span>
+        <span class="activity-subtitle">{{ activity.subtitle }}</span>
       </div>
-      @if (metaLabel != '') {
-        <div class="activity-meta">{{ metaLabel }}</div>
+      @if (activity.metaLabel) {
+        <div class="activity-meta">{{ activity.metaLabel }}</div>
       }
     </div>
   </div>
   
   <div class="card-body">
-    <p class="description">{{ description }}</p>
+    <p class="description">{{ activity.description }}</p>
     
-    <div class="tags-container">
-      @for (tag of tags.core; track tag) {
-        <span class="badge core-badge">{{ tag }}</span>
-      }
-      
-      @if (hasAdditionalTags && !showAdditionalTags) {
-        <div class="tag-separator" 
-              [class.expanded]="showAdditionalTags"
-              (click)="toggleAdditionalTags()">
-          <span class="separator-text">...</span>
-        </div>
-      }
-      
-      @if (showAdditionalTags && tags.additional && tags.additional.length > 0) {
-        @for (tag of tags.additional; track tag) {
-          <span class="badge secondary-badge">{{ tag }}</span>
+    @if (activity.tags) {
+      <div class="tags-container">
+        @for (tag of activity.tags.core; track tag) {
+          <span class="badge core-badge">{{ tag }}</span>
         }
-      }
-    </div>
+        
+        @if (hasAdditionalTags && !showAdditionalTags) {
+          <div class="tag-separator" 
+                [class.expanded]="showAdditionalTags"
+                (click)="toggleAdditionalTags()">
+            <span class="separator-text">...</span>
+          </div>
+        }
+        
+        @if (showAdditionalTags && activity.tags.additional && activity.tags.additional.length > 0) {
+          @for (tag of activity.tags.additional; track tag) {
+            <span class="badge secondary-badge">{{ tag }}</span>
+          }
+        }
+      </div>
+    }
   </div>
 </div>

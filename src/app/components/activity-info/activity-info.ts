@@ -6,19 +6,12 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./activity-info.less']
 })
 export class ActivityInfoComponent {
-  @Input() activityName: string = '';
-  @Input() activitySubtitle: string = '';
-  @Input() metaLabel: string = '';
-  @Input() description: string = '';
-  @Input() tags: {
-    core: string[];
-    additional?: string[];
-  } = { core: [] };
+  @Input({required: true}) activity: Activity = { name: '', subtitle: '', description: '' };
   
   showAdditionalTags = false;
   
   get hasAdditionalTags(): boolean {
-    const additional = this.tags.additional;
+    const additional = this.activity.tags?.additional;
     if (additional && additional.length > 0) {
       return true;
     }
