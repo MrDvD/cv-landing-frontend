@@ -7,7 +7,7 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
   imports: [],
   templateUrl: './vim-editor.html',
   styleUrl: './vim-editor.less',
-  encapsulation: ViewEncapsulation.None,
+  encapsulation: ViewEncapsulation.ShadowDom,
 })
 export class VimEditorComponent implements OnInit {
   @Input({required: true}) rawContent: string = '';
