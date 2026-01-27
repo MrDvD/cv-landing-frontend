@@ -5,8 +5,9 @@ services:
     volumes:
       - ./landing-page.conf:/etc/nginx/conf.d/landing-page.conf:ro
       - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./assets:/usr/share/nginx/html/assets:ro
     ports:
-      - 8080:80
+      - 80:80
     networks:
       - frontend
 
