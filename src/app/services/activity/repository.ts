@@ -29,7 +29,6 @@ export class DefaultActivityRepository implements ActivityRepository<Activity> {
   public getAll(type: string): Observable<Activity[]> {
     return this.http.get<ActivityDTO[]>(`${this.apiBase}/${type}/`).pipe(
       map(dtos => dtos.map(dto => this.mapToActivity(dto))),
-      tap(activities => console.log('Mapped Activities:', activities)),
       catchError((error) => {
         console.error('API Error:', error);
         return throwError(() => new Error('Failed to fetch activities'));
