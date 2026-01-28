@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { catchError, map, Observable, tap, throwError } from 'rxjs';
+import { catchError, map, Observable, throwError } from 'rxjs';
 import { ConfigService } from '../config/config';
+import { Activity } from 'src/app/components/activity-info/activity';
 
 export interface ActivityRepository<T extends Activity> {
   getAll(type: string): Observable<T[]>;
@@ -40,6 +41,10 @@ export class DefaultActivityRepository implements ActivityRepository<Activity> {
     let activity: Activity = {
       name: dto.Name,
       subtitle: dto.Subtitle,
+      attachments: [],
+      period: {
+        start: dto.DateStart
+      }
     }
     if (dto.Description) {
       activity.description = dto.Description;

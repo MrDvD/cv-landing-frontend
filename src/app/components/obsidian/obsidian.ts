@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { ServiceToken } from 'src/app/services/tokens';
 import { TreeNode } from '../skills-tree/tree-node.model';
 import { AsyncPipe } from '@angular/common';
+import { Activity } from '../activity-info/activity';
 
 @Component({
   selector: 'app-obsidian',

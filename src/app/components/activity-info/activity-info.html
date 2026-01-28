@@ -1,37 +1,77 @@
-<div class="activity-card">
-  <div class="card-header">
-    <div class="header-content">
-      <div class="activity-main-info">
-        <span class="activity-name">{{ activity.name }}</span>
-        <span class="activity-subtitle">{{ activity.subtitle }}</span>
-      </div>
+<div class="activity-card terminal-window">
+  <div class="terminal-header">
+    <div class="window-info">
       @if (activity.metaLabel) {
-        <div class="activity-meta">{{ activity.metaLabel }}</div>
+        <span class="meta-tag">{{ activity.metaLabel }}</span>
       }
+      <span class="filename">{{ activity.name | lowercase }}.service</span>
+    </div>
+    <div class="window-meta">
+      <span class="date-tag">[{{ dateRange }}]</span>
     </div>
   </div>
-  
-  <div class="card-body">
-    <p class="description">{{ activity.description }}</p>
-    
-    @if (activity.tags) {
-      <div class="tags-container">
-        @for (tag of activity.tags.core; track tag) {
-          <span class="badge core-badge">{{ tag }}</span>
-        }
-        
-        @if (hasAdditionalTags && !showAdditionalTags) {
-          <div class="tag-separator" 
-                [class.expanded]="showAdditionalTags"
-                (click)="toggleAdditionalTags()">
-            <span class="separator-text">...</span>
+
+  <div class="terminal-body">
+    <div class="commit-section">
+      <div class="commit-header">
+        <span class="hash">commit {{ sysInfo.hash }}</span>
+        <span class="ref">(HEAD -> main)</span>
+      </div>
+      <div class="subject">{{ activity.subtitle }}</div>
+      <p class="description-text">{{ activity.description }}</p>
+    </div>
+
+    @if (activity.tags; as tags) {
+      <div class="tags-wrapper">
+        <div class="tag-row">
+          <span class="cli-prompt">$</span>
+          @for (tag of tags.core; track tag) {
+            <span class="cli-flag">--{{ tag }}</span>
+          }
+          
+          @if (hasAdditionalTags) {
+            <button class="expand-btn" (click)="toggleAdditionalTags()">
+              {{ showAdditionalTags ? 'collapse' : '...' }}
+            </button>
+          }
+        </div>
+
+        @if (showAdditionalTags && tags.additional) {
+          <div class="tag-row additional fade-in">
+            @for (tag of tags.additional; track tag) {
+              <span class="cli-flag secondary">--{{ tag }}</span>
+            }
           </div>
         }
-        
-        @if (showAdditionalTags && activity.tags.additional && activity.tags.additional.length > 0) {
-          @for (tag of activity.tags.additional; track tag) {
-            <span class="badge secondary-badge">{{ tag }}</span>
-          }
+      </div>
+    }
+
+    @if (activity.attachments.length) {
+      <div class="attachment-zone" #attachmentContainer>
+        <button class="ls-cmd" [class.active]="showAttachments" (click)="toggleAttachments()">
+          <span class="icon">📁</span> ls -la ./resources/
+        </button>
+
+        @if (showAttachments) {
+          <div class="ls-output fade-in">
+            <div class="ls-line header">total {{ activity.attachments.length }}</div>
+            @for (item of activity.attachments; track item.name) {
+              <a [href]="item.url" target="_blank" class="ls-line item">
+                @let isLink = isExternalLink(item.url);
+                
+                <span class="perms">{{ isLink ? 'lrwxrwxrwx' : '-rw-r--r--' }}</span>
+                <span class="owner">dev</span>
+                
+                <div class="file-path">
+                  <span class="file-name" [class.symlink]="isLink">{{ item.name }}</span>
+                  @if (isLink) {
+                    <span class="link-arrow">-></span>
+                    <span class="link-dest">{{ item.url }}</span>
+                  }
+                </div>
+              </a>
+            }
+          </div>
         }
       </div>
     }
