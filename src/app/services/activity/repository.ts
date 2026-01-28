@@ -10,8 +10,8 @@ export interface ActivityRepository<T extends Activity> {
 
 interface ActivityDTO {
   Name: string;
-  Subtitle: string;
-  Description: string | null;
+  Subtitle: string | null;
+  Description: string;
   Type: string;
   MetaLabel: string | null;
   DateStart: string;
@@ -40,7 +40,7 @@ export class DefaultActivityRepository implements ActivityRepository<Activity> {
   private mapToActivity(dto: ActivityDTO): Activity {
     let activity: Activity = {
       name: dto.Name,
-      subtitle: dto.Subtitle,
+      description: dto.Description,
       attachments: [],
       period: {
         start: dto.DateStart

@@ -5,9 +5,9 @@ export interface Attachment {
 
 export interface Activity {
   name: string;
-  subtitle: string;
+  subtitle?: string;
   metaLabel?: string;
-  description?: string;
+  description: string;
   period: {
     start: string;
     end?: string;

@@ -9,36 +9,6 @@
     border-color: var(--primary); 
   }
 
-  .terminal-header {
-    background: var(--bg-2);
-    padding: 6px 12px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid var(--border-color);
-    font-size: 0.75rem;
-
-    .window-info {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .meta-tag {
-      background: var(--primary);
-      color: var(--bg-1); // Inverted for contrast
-      padding: 1px 6px;
-      border-radius: 2px;
-      font-weight: bold;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      font-size: 0.65rem;
-    }
-
-    .filename { color: var(--text-1); }
-    .date-tag { color: var(--text-3); }
-  }
-
   .terminal-body {
     padding: 1rem;
     color: var(--text-1);
@@ -52,11 +22,28 @@
   padding-left: 1rem;
 
   .hash { color: var(--secondary); margin-right: 8px; }
-  .ref { color: var(--accent); font-weight: bold; }
+  .ref { 
+    color: var(--accent); 
+    font-weight: bold; 
+  }
+
+  .commit-meta {
+    margin: 8px 0;
+    
+    .meta-line {
+      display: flex;
+      gap: 8px;
+      line-height: 1.4;
+      
+      .label { color: var(--text-3); min-width: 60px; }
+      .value { color: var(--text-1); }
+    }
+  }
+
   .subject { 
     display: block; 
     font-weight: bold; 
-    margin: 4px 0; 
+    margin: 12px 0 4px 0;
     color: var(--primary); 
   }
   .description-text { color: var(--text-2); margin: 0; }
@@ -114,6 +101,15 @@
       padding: 2px 12px;
       font-size: 0.8rem;
       text-decoration: none;
+
+      &.header {
+        user-select: none;
+      }
+
+      &.item:hover {
+        background: var(--bg-3);
+        .file-name.symlink { text-decoration: underline; }
+      }
       
       .perms { width: 85px; color: var(--accent); }
       .owner { width: 35px; color: var(--secondary); }
@@ -135,11 +131,6 @@
 
       .link-arrow { color: var(--text-3); }
       .link-dest { color: var(--text-2); font-size: 0.75rem; }
-
-      &:hover {
-        background: var(--bg-3);
-        .file-name.symlink { text-decoration: underline; }
-      }
     }
   }
 }

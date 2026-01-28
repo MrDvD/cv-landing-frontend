@@ -1,11 +1,10 @@
-import { LowerCasePipe } from '@angular/common';
 import { Component, Input, ElementRef, OnDestroy, inject, ChangeDetectorRef, ViewChild, OnInit } from '@angular/core';
 import { Activity } from './activity';
 
 @Component({
   selector: 'app-activity-info',
   standalone: true,
-  imports: [LowerCasePipe],
+  imports: [],
   templateUrl: './activity-info.html',
   styleUrls: ['./activity-info.less']
 })
@@ -44,9 +43,11 @@ export class ActivityInfoComponent implements OnInit, OnDestroy {
     };
 
     const formattedStart = formatDate(start);
-    const formattedEnd = end ? formatDate(end) : 'Present';
-
-    return `${formattedStart} — ${formattedEnd}`;
+    if (end) {
+      return `${formattedStart} — ${formatDate(end)}`;
+    } else {
+      return formattedStart;
+    }
   }
 
   get hasAdditionalTags(): boolean {
