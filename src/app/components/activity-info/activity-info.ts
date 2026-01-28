@@ -10,7 +10,7 @@ import { Activity } from './activity';
 })
 export class ActivityInfoComponent implements OnInit, OnDestroy {
   @Input({required: true}) activity!: Activity;
-  @ViewChild('attachmentContainer') attachmentContainer!: ElementRef;
+  @ViewChild('attachmentContainer') attachmentContainer?: ElementRef;
   
   private clickListener?: (event: MouseEvent) => void;
   private cdr = inject(ChangeDetectorRef);
@@ -66,7 +66,7 @@ export class ActivityInfoComponent implements OnInit, OnDestroy {
 
   private addOutsideClickListener(): void {
     this.clickListener = (event: MouseEvent) => {
-      if (!this.attachmentContainer.nativeElement.contains(event.target)) {
+      if (this.attachmentContainer && !this.attachmentContainer.nativeElement.contains(event.target)) {
         this.showAttachments = false;
         this.removeOutsideClickListener();
         this.cdr.detectChanges();

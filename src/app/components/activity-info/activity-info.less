@@ -111,8 +111,12 @@
         .file-name.symlink { text-decoration: underline; }
       }
       
-      .perms { width: 85px; color: var(--accent); }
-      .owner { width: 35px; color: var(--secondary); }
+      .perms {
+        color: var(--accent);
+      }
+      .owner {
+        color: var(--secondary);
+      }
 
       .file-path {
         display: flex;
@@ -123,14 +127,23 @@
 
       .file-name {
         color: var(--text-1);
+        text-wrap: nowrap;
         &.symlink {
           color: var(--primary);
           font-weight: bold;
         }
       }
 
-      .link-arrow { color: var(--text-3); }
-      .link-dest { color: var(--text-2); font-size: 0.75rem; }
+      .link-arrow {
+        color: var(--text-3);
+        text-wrap: nowrap;
+      }
+      .link-dest {
+        color: var(--text-2);
+        font-size: 0.75rem;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
     }
   }
 }
