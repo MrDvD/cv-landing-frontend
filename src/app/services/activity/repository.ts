@@ -9,6 +9,7 @@ export interface ActivityRepository<T extends Activity> {
 }
 
 interface ActivityDTO {
+  Id: number;
   Name: string;
   Subtitle: string | null;
   Description: string;
@@ -29,7 +30,11 @@ export class DefaultActivityRepository implements ActivityRepository<Activity> {
 
   public getAll(type: string): Observable<Activity[]> {
     return this.http.get<ActivityDTO[]>(`${this.apiBase}/${type}/`).pipe(
-      map(dtos => dtos.map(dto => this.mapToActivity(dto))),
+      map(dtos => {
+        const activities = dtos.map(dto => this.mapToActivity(dto));
+        activities.forEach(activity => console.log(activity));
+        return activities;
+      }),
       catchError((error) => {
         console.error('API Error:', error);
         return throwError(() => new Error('Failed to fetch activities'));
@@ -39,12 +44,16 @@ export class DefaultActivityRepository implements ActivityRepository<Activity> {
 
   private mapToActivity(dto: ActivityDTO): Activity {
     let activity: Activity = {
+      id: dto.Id,
       name: dto.Name,
       description: dto.Description,
       attachments: [],
       period: {
         start: dto.DateStart
       }
+    }
+    if (dto.Subtitle) {
+      activity.subtitle = dto.Subtitle;
     }
     if (dto.Description) {
       activity.description = dto.Description;

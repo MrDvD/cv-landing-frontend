@@ -4,6 +4,7 @@ export interface Attachment {
 }
 
 export interface Activity {
+  id: number;
   name: string;
   subtitle?: string;
   metaLabel?: string;

@@ -50,15 +50,20 @@
 }
 
 .tags-wrapper {
-  margin-top: 0.7rem;
+  display: flex;
+  gap: 8px;
+  margin-top: 1rem;
+  line-height: 14px;
   .tag-row {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
     align-items: center;
-    &.additional { margin-top: 4px; padding-left: 1.2rem; }
   }
-  .cli-prompt { color: var(--accent); font-weight: bold; }
+  .cli-prompt {
+    color: var(--accent);
+    font-weight: bold;
+  }
   .cli-flag {
     color: var(--secondary);
     &.secondary { opacity: 0.6; }

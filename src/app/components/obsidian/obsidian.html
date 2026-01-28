@@ -15,37 +15,6 @@
         @for (item of (events$ | async) ?? []; track item.name) {
           <app-activity-info [activity]="item"></app-activity-info>
         }
-        <app-activity-info 
-      [activity]="{
-        name: 'Enterprise Angular Migration',
-        subtitle: 'Lead Frontend Architect',
-        metaLabel: 'ONGOING',
-        description: 'Coordinating the migration of a large-scale financial dashboard from legacy versions to Angular 17, focusing on standalone components and Signal-based state management.',
-        period: { start: 'Jan 2024' },
-        tags: {
-          core: ['Angular', 'Signals', 'Architecture'],
-          additional: ['RxJS', 'Unit Testing', 'CI/CD']
-        },
-        attachments: [
-          { name: 'migration-roadmap.pdf', url: '/assets/docs/map.pdf' },
-          { name: 'github-repo', url: 'https://github.com/user/project/sadfasdf/asdfas/dfsadf/sadf' },
-          { name: 'live-demo', url: 'https://demo.example.com' }
-        ]
-      }">
-    </app-activity-info>
-
-    <app-activity-info 
-      [activity]="{
-        name: 'Legacy API Integration',
-        subtitle: 'Middleware Specialist',
-        attachments: [],
-        description: 'Developed a robust proxy layer to bridge modern frontend requirements with SOAP-based legacy services, reducing latency by 40%.',
-        period: { start: 'Jun 2023', end: 'Dec 2023' },
-        tags: {
-          core: ['Node.js', 'SOAP', 'Performance']
-        }
-      }">
-    </app-activity-info>
       </div>
     </section>
   </div>

@@ -1,3 +1,5 @@
+@import '@styles/platforms.less';
+
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -27,5 +29,10 @@
       content: "> ";
       opacity: 0.5;
     }
+  }
+}
+@media (max-width: @mobile) {
+  .image {
+    max-height: 225px;
   }
 }

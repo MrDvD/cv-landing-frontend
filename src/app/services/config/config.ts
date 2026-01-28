@@ -5,6 +5,7 @@ import { firstValueFrom } from 'rxjs';
 export interface AppConfig {
   skillsApiBase: string;
   activityApiBase: string;
+  tagsApiBase: string;
 }
 
 @Injectable()

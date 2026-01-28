@@ -25,26 +25,22 @@
 
     @if (activity.tags; as tags) {
       <div class="tags-wrapper">
+        <div class="cli-prompt">$</div>
         <div class="tag-row">
-          <span class="cli-prompt">$</span>
           @for (tag of tags.core; track tag) {
             <span class="cli-flag">--{{ tag }}</span>
           }
-          
-          @if (hasAdditionalTags) {
-            <button class="expand-btn" (click)="toggleAdditionalTags()">
-              {{ showAdditionalTags ? 'collapse' : '...' }}
-            </button>
-          }
-        </div>
-
-        @if (showAdditionalTags && tags.additional) {
-          <div class="tag-row additional fade-in">
+          @if (showAdditionalTags && tags.additional) {
             @for (tag of tags.additional; track tag) {
               <span class="cli-flag secondary">--{{ tag }}</span>
             }
-          </div>
-        }
+          }
+          @if (hasAdditionalTags && !showAdditionalTags) {
+            <button class="expand-btn" (click)="toggleAdditionalTags()">
+              {{ showAdditionalTags ? '- -' : '...' }}
+            </button>
+          }
+        </div>
       </div>
     }
 
