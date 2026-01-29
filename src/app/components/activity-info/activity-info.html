@@ -47,7 +47,7 @@
     @if (activity.attachments.length) {
       <div class="attachment-zone">
         <button class="ls-cmd" [class.active]="showAttachments" (click)="toggleAttachments()">
-          <span class="icon">📁</span> ls -la ./resources/
+          <span class="icon">📁</span> ls -la ./attachments/
         </button>
 
         @if (showAttachments) {

@@ -32,7 +32,6 @@ export class DefaultActivityRepository implements ActivityRepository<Activity> {
     return this.http.get<ActivityDTO[]>(`${this.apiBase}/${type}/`).pipe(
       map(dtos => {
         const activities = dtos.map(dto => this.mapToActivity(dto));
-        activities.forEach(activity => console.log(activity));
         return activities;
       }),
       catchError((error) => {

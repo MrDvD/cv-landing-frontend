@@ -1,6 +1,9 @@
 export interface Attachment {
+  id: number;
   name: string;
   url: string;
+  priority?: number;
+  attachmentId: number;
 }
 
 export interface Activity {

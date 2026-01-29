@@ -18,6 +18,7 @@ export class ObsidianComponent {
   private activityRepo = inject(ServiceToken.ACTIVITY_REPOSITORY);
   private tagsRepo = inject(ServiceToken.TAGS_REPOSITORY);
   private skillsRepo = inject(ServiceToken.SKILLS_REPOSITORY);
+  private attachmentRepo = inject(ServiceToken.ATTACHMENTS_REPOSITORY);
 
   protected projects$: Observable<Activity[]> = this.activityRepo.getAll('projects');
   protected education$: Observable<Activity[]> = this.activityRepo.getAll('education');
@@ -25,9 +26,9 @@ export class ObsidianComponent {
   protected hardSkills$: Observable<TreeNode[]> = this.skillsRepo.getHard();
 
   ngOnInit() {
-    this.projects$ = this.enrichWithTags(this.projects$);
-    this.education$ = this.enrichWithTags(this.education$);
-    this.events$ = this.enrichWithTags(this.events$);
+    this.projects$ = this.enrichWithAttachments(this.enrichWithTags(this.projects$));
+    this.education$ = this.enrichWithAttachments(this.enrichWithTags(this.education$));
+    this.events$ = this.enrichWithAttachments(this.enrichWithTags(this.events$));
   }
 
   private enrichWithTags(source$: Observable<Activity[]>): Observable<Activity[]> {
@@ -50,6 +51,25 @@ export class ObsidianComponent {
             }))
           );
         });
+        return forkJoin(enriched);
+      })
+    );
+  }
+
+  private enrichWithAttachments(source$: Observable<Activity[]>): Observable<Activity[]> {
+    return source$.pipe(
+      switchMap(activities => {
+        if (!activities?.length) {
+          return of([]);
+        }
+        const enriched = activities.map(activity => 
+          this.attachmentRepo.get(activity.id).pipe(
+            map(attachments => ({
+              ...activity,
+              attachments: attachments
+            }))
+          )
+        );
         return forkJoin(enriched);
       })
     );

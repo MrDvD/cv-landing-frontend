@@ -8,6 +8,7 @@ import { I3BarComponent } from './components/i3-bar/i3-bar';
 import { DefaultActivityRepository } from './services/activity/repository';
 import { DefaultSkillsRepository } from './services/skills/repository';
 import { DefaultTagsRepository } from './services/tags/repository';
+import { DefaultAttachmentsRepository } from './services/attachments/repository';
 
 @Component({
   selector: 'app-root',
@@ -28,6 +29,10 @@ import { DefaultTagsRepository } from './services/tags/repository';
     {
       provide: ServiceToken.TAGS_REPOSITORY,
       useClass: DefaultTagsRepository,
+    },
+    {
+      provide: ServiceToken.ATTACHMENTS_REPOSITORY,
+      useClass: DefaultAttachmentsRepository,
     },
   ],
   templateUrl: './app.html',
